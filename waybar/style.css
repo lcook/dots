@@ -1,0 +1,78 @@
+@import "theme.css";
+
+/* Global defaults */
+* {
+  border: none;
+  border-radius: 10px;
+  font-size: 10pt;
+  font-family: "Apercu Mono Pro", FontAwesome;
+  padding: 4px;
+  transition: background-color .2s ease-out;
+}
+
+/* Workspaces */
+#workspaces {
+  background-color: @background;
+}
+
+#workspaces button {
+  color: @foreground;
+  margin: 1px 1px;
+  min-width: 35px;
+}
+
+#workspaces button.active {
+  background-color: @background1;
+  color: @accent;
+}
+
+#workspaces button.urgent {
+  background-color: @urgent;
+}
+
+#workspaces button:hover {
+  background: @background1;
+  border: @background1;
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+/* Modules */
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#network,
+#temperature,
+#tray,
+#window {
+  color: @foreground;
+  background-color: @background;
+  padding: 3px 15px;
+}
+
+/* Hardware group */
+#hardware    { padding: 0px; }
+#cpu         { border-radius: 0px 10px 10px 0px; }
+#memory      { border-radius: 10px 0px 0px 10px; }
+#temperature { border-radius: 0px; }
+
+/* Window */
+window#waybar {
+  border-radius: 0px;
+  background: transparent;
+}
+
+window#waybar #window {
+  background-color: transparent;
+}
+
+window#waybar.empty #window {
+   background-color: transparent;
+   transition: none;
+}
+
+/* System tray */
+#tray > .passive         { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }

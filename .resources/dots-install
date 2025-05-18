@@ -1,0 +1,112 @@
+#!/usr/bin/env sh
+# shellcheck disable=SC3043
+# vim: syntax=sh et ts=2 sw=2 sts=2
+
+has_local () { local _has_local; }
+
+has_local 2>/dev/null || alias local=typset
+
+message       () { echo ":: $*";                       }
+message_info  () { message "[Info] $*";                }
+message_error () { message "[Error] $*" >&2 && exit 1; }
+
+#
+# Dependencies required to have everything running properly
+# with our dotfiles repository. These are outlined in the
+# README file.
+#
+deps="fish ghostty git hyprland hyprlock hyprpaper mako python3 tofi waybar"
+
+#
+# Default theme to apply to our configuration files.
+#
+theme="pontocho"
+
+#
+# List of symbolic links to setup, by default include
+# everything.
+#
+links="fish ghostty hypr mako tofi waybar"
+
+dep ()
+{
+  [ -z "$(command -v "$1")" ] && \
+      message_error "'$1' (command not found) is required but not installed - install and try again"
+}
+
+check_deps ()
+{
+  message "Checking dependencies.."
+
+  for _dep in $deps; do
+    dep "$_dep"
+  done
+
+  [ "$(command -v fc-list)" ] && ! fc-list -q FontAwesome && \
+      message_info "FontAwesome does not appear to be installed, you may encounter issues with icons on waybar"
+
+  message_info "Dependencies satisfied"
+}
+
+clone_repo ()
+{
+  local _repo="$1"
+  local _dest="$2"
+
+  message "Cloning git repository '$_repo' to destination '$_dest'"
+
+  [ -d "$_dest" ] && \
+    message_error "'$_dest' destination directory already exists - investigate and try again"
+
+  if ! git clone --branch=main --depth=1 "$_repo" "$_dest"; then
+    message_error "Could not clone '$_repo' repository"
+  fi
+
+  message_info "Git repository cloned successfully to '$_dest'"
+}
+
+apply_theme ()
+{
+  local _dir="$1"
+  local _theme="$2"
+ 
+  message "Applying theme '$_theme' using themer script"
+
+  [ ! -d "$_dir" ] && \
+    message_error "Directory '$_dir' does not exist - investigate and try again"
+
+  cd "$_dir" && ./0-themer "$_theme"
+
+  message_info "Theme successfully applied without error"
+}
+
+setup_links ()
+{
+  local _dir="$1"
+
+  message "Setting up symbolic links for applications '$links'"
+
+  [ ! -d "$_dir" ] && \
+      message_error "Directory '$_dir' does not exist - investigate and try again"
+
+  cd "$_dir" && ./1-symlinks
+}
+
+main ()
+{
+  local _repo="https://github.lcook/dots"
+  local _dest=~/dev/dots
+ 
+  check_deps
+
+  clone_repo $_repo $_dest
+  apply_theme $_dest $theme
+  setup_links $_dest
+
+  echo
+  message_info "Dotfile installer script completed successfully"
+  message_info "It is recommended to reboot your system to apply the changes"
+  echo
+}
+
+main "$@"

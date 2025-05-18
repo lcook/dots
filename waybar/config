@@ -1,0 +1,77 @@
+{
+  "position": "top",
+  "height": 35,
+  "spacing": 5,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "network",
+    "group/hardware",
+    "hyprland/language",
+    "tray",
+    "clock"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "●",
+      "empty": "○"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "disable-scroll": true
+  },
+  "clock": {
+    "format": " {:%H:%M  %e %b}",
+    "tooltip": false
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "tooltip-format-wifi": "IP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}GHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": "IP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}"
+  },
+  "cpu": {
+    "format": " {max_frequency}GHz ({usage}%)"
+  },
+  "memory": {
+    "interval": 5,
+    "format": " {used:0.2f}/{total:0.0f}GB"
+  },
+  "temperature": {
+    "interval": 10,
+    "critical-threshold": 100,
+    "format-critical": " {temperatureC}",
+    "format": " {temperatureC}°C",
+    "tooltip": false
+  },
+  "hyprland/language": {
+    "format": "  {}",
+    "on-click": "hyprctl switchxkblayout sleepdealer-bb60 next"
+  },
+  "hyprland/window": {
+    "max-length": 60,
+    "tooltip": false,
+  },
+  "tray": {
+    "icon-size": 15
+  },
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "memory",
+      "temperature",
+      "cpu"
+     // "battery"
+    ]
+  }
+}

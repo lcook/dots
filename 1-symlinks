@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+main ()
+{
+  [ ! -d ~/.config ] && mkdir ~/.config
+  _targets=$(printf '%s\n' "$@")
+  find . -maxdepth 1 -type d ! -path '*/.*' ! -path . ! -path ./themer -exec realpath {} + | while IFS= read -r _target; do
+    printf '%s\n' "$_targets" | while IFS= read -r _line; do
+      [ -n "$_line" ] && [ "$_line" != "$(basename $_target)" ] \
+        && continue
+
+      _conf=~/.config/$(basename "$_target")
+      if [ -L "$_conf" ]; then
+        echo "Symbolic link already exists for $_conf"
+        break
+      fi
+
+      if [ -d "$_conf" ]; then
+        echo "Directory $_conf already exists, backing up to $(basename $_target).old"
+        mv "$_conf" "${_conf}.old"
+      fi
+
+      cd ~ && ln -sf "$_target" "$_conf"
+      echo "Created symbolic link $_conf -> $_target"
+    done
+  done
+}
+
+main "$@"

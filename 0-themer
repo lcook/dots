@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+main ()
+{
+  if [ $# -lt 1 ]; then
+cat <<EOF
+$(basename "$0") [theme]
+
+Available themes: $(sed -rn 's,^\[theme-([a-zA-Z0-9]+)\],\1,p' theme.conf | tr '\n' ' ')
+EOF
+    exit 0
+  fi
+  _theme=$1; ./themer/themer.py --config theme.conf --theme "$_theme"
+}
+
+main "$@"
