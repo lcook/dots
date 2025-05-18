@@ -94,7 +94,7 @@ setup_links ()
 
 main ()
 {
-  local _repo="https://github.lcook/dots"
+  local _repo="https://github.com/lcook/dots"
   local _dest=~/dev/dots
  
   check_deps
