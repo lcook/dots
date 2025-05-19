@@ -30,17 +30,24 @@ links="fish ghostty hypr mako tofi waybar"
 
 dep ()
 {
-  [ -z "$(command -v "$1")" ] && \
-      message_error "'$1' (command not found) is required but not installed - install and try again"
+  if [ -z "$(command -v "$1")" ]; then
+    message_info "'$1' (command not found) is required but not installed"
+    return 1
+  fi
 }
 
 check_deps ()
 {
   message "Checking dependencies.."
 
+  local _temp=""
   for _dep in $deps; do
-    dep "$_dep"
+    if ! dep "$_dep"; then
+      _temp="$_dep $_temp"
+    fi
   done
+
+  [ -n "$_temp" ] && message_error "Dependencies not found: '${_temp%%\ }' - install and try again"
 
   [ "$(command -v fc-list)" ] && ! fc-list -q FontAwesome && \
       message_info "FontAwesome does not appear to be installed, you may encounter issues with icons on waybar"
@@ -77,7 +84,7 @@ apply_theme ()
 
   cd "$_dir" && ./0-themer "$_theme"
 
-  message_info "Theme successfully applied without error"
+  message_info "Theme successfully applied"
 }
 
 setup_links ()
