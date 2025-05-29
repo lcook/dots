@@ -1,3 +1,5 @@
+set -g fish_greeting
+
 set -l local_config ~/.config/fish/conf.d/config.fish.local
 test -e $local_config; and source $local_config
 
@@ -18,5 +20,6 @@ if status is-login
     else
         phoon_banner
     end
-
 end
+
+__ssh_agent_start
