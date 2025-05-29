@@ -9,8 +9,8 @@ function __ssh_agent_start
 
         set -l auth_socket ~/.ssh/agent.(hostname -s).sock
         if test -S $auth_socket
-            if not set -q SSH_AUTH_SOCKET
-                set -x SSH_AUTH_SOCK $auth_socket
+            if not set -q SSH_AUTH_SOCK
+                set -gx SSH_AUTH_SOCK $auth_socket
             end
         else
             set -l agent (ssh-agent -c -a "$auth_socket" -t 28800 2>/dev/null)
