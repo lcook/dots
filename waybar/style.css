@@ -5,7 +5,7 @@
   border: none;
   border-radius: 10px;
   font-size: 10pt;
-  font-family: "Apercu Mono Pro", FontAwesome;
+  font-family: Iosevka, "Font Awesome 6 Free";
   padding: 4px;
   transition: background-color .2s ease-out;
 }
