@@ -30,11 +30,10 @@ function fish_git_prompt
         end
     end
 
-    if test -n "$bits"
-        echo -n "<"(string join "" $bits)"> "
-    end
-
     set -l sha (command git rev-parse --short=5 HEAD 2>/dev/null)
 
-    echo -e "<"(set_color $random_color)$branch(set_color normal)"·"$sha">"
+    echo -e "▉"(set_color -r normal)" "\ue725 (set_color -r $random_color) $branch (set_color -r normal) $sha" "
+    if test -n "$bits"
+        echo "$(set_color -r normal) $(string join "" $bits) "
+    end
 end
