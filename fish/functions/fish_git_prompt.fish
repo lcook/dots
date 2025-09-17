@@ -1,4 +1,4 @@
-set -l --append colors red green yellow magenta cyan white
+set -l --append colors red green yellow blue magenta cyan
 set -l index (math "$(random) % 6 + 1")
 
 set -g random_color $colors[$index]
@@ -32,8 +32,8 @@ function fish_git_prompt
 
     set -l sha (command git rev-parse --short=5 HEAD 2>/dev/null)
 
-    echo -e "▉"(set_color -r normal)" "\ue725 (set_color -r $random_color) $branch (set_color -r normal) $sha" "
+    echo -e \u2589(set_color -r normal)" "\ue725 (set_color -r $random_color) $branch (set_color -r normal) $sha" "
     if test -n "$bits"
-        echo "$(set_color -r normal) $(string join "" $bits) "
+        echo $(set_color -r normal) $(string join "" $bits)" "
     end
 end
