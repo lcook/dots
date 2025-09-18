@@ -11,6 +11,7 @@
   "modules-right": [
     "network",
     "group/hardware",
+    "wireplumber",
     "battery",
     "hyprland/language",
     "tray",
@@ -48,8 +49,22 @@
     "interval": 5,
     "format": " {used:0.2f}/{total:0.0f}GB"
   },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂰",
+    "format-muted": "󰝟 Muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "󰖀",
+        "󰕾",
+        ""
+      ]
+    },
+    "tooltip": false
+  },
   "battery": {
-    "format": "{capacity}% {icon}",
+    "format": "{icon} {capacity}%",
     "format-icons": {
       "charging": [
         "󰢜",

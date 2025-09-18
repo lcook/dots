@@ -45,6 +45,7 @@
 #memory,
 #network,
 #temperature,
+#wireplumber,
 #tray,
 #window {
   color: @foreground;
