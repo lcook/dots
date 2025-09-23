@@ -32,8 +32,8 @@ function fish_git_prompt
 
     set -l sha (command git rev-parse --short=5 HEAD 2>/dev/null)
 
-    echo -e \u2589(set_color -r normal)" "\ue725 (set_color -r $random_color) $branch (set_color -r normal) $sha" "
+    echo -e \u2589(set_color -r white) \ue725 " "(set_color -r $random_color) $branch (set_color -r white) $sha" "
     if test -n "$bits"
-        echo $(set_color -r normal) $(string join "" $bits)" "
+        echo $(set_color -r white) $(string join "" $bits)" "
     end
 end
