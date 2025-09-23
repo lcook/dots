@@ -10,7 +10,14 @@ Available themes: $(sed -rn 's,^\[theme-([a-zA-Z0-9]+)\],\1,p' theme.conf | tr '
 EOF
     exit 0
   fi
-  _theme=$1; ./themer/themer.py --config theme.conf --theme "$_theme"
+  _theme=$1; ./themer/themer.py --config theme.conf --theme "$_theme" && {
+     if pgrep -x Hyprland >/dev/null 2>&1; then
+        killall -q waybar    && waybar &
+        killall -q hyprpaper && hyprpaper &
+        killall -q mako      && mako &
+        hyprctl reload
+     fi
+   }
 }
 
 main "$@"
