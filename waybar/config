@@ -35,12 +35,12 @@
   "network": {
     "format": "{ifname}",
     "format-wifi": " {essid}",
-    "format-ethernet": " {ipaddr}/{cidr}",
+    "format-ethernet": " {ipaddr}",
     "format-linked": " {ifname} (No IP)",
     "format-disconnected": "⚠ Disconnected",
     "tooltip-format": " {ifname} via {gwaddr}",
-    "tooltip-format-wifi": "IP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}GHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-    "tooltip-format-ethernet": "IP: {ipaddr}\n Up: {bandwidthUpBits} Down: {bandwidthDownBits}"
+    "tooltip-format-wifi": "IP: {ipaddr}\n Strength: {signalStrength}%\nFreq: {frequency}GHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": "Up: {bandwidthUpBits} Down: {bandwidthDownBits}"
   },
   "cpu": {
     "format": " {max_frequency}GHz ({usage}%)"
