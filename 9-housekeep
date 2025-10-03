@@ -1,9 +1,10 @@
 #!/usr/bin/env sh
+# vim: syntax=sh et ts=2 sw=2 sts=2
 
 main ()
 {
-    if [ $# -lt 1 ]; then
-cat <<EOF
+  if [ $# -lt 1 ]; then
+    cat <<EOF
 $(basename "$0") [theme]
 
 Available themes: $(sed -rn 's,^\[theme-([a-zA-Z0-9]+)\],\1,p' theme.conf | tr '\n' ' ')
