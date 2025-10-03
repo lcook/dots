@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# vim: syntax=sh et ts=2 sw=2 sts=2
+
+main ()
+{
+  [ -d ~/dev/dots ] && {
+    cd ~/dev/dots
+    sed -rn 's,^\[theme-([a-zA-Z0-9]+)\],\1,p' theme.conf | tofi --prompt "theme:" | xargs ./0-themer
+  }
+}
+
+main "$@"
