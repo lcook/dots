@@ -3,9 +3,9 @@
 /* Global defaults */
 * {
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 10pt;
-  font-family: Iosevka, "Font Awesome 7 Free";
+  font-family: "Ubuntu Mono", "Iosevka", "Font Awesome 7 Free";
   padding: 4px;
   transition: background-color .2s ease-out;
 }
@@ -13,6 +13,7 @@
 /* Workspaces */
 #workspaces {
   background-color: @background;
+  opacity: 0.90;
 }
 
 #workspaces button {
@@ -50,14 +51,15 @@
 #window {
   color: @foreground;
   background-color: @background;
-  padding: 3px 15px;
+  opacity: 0.90;
+  padding: 15px
 }
 
 /* Hardware group */
 #hardware    { padding: 0px; }
-#cpu         { border-radius: 0px 10px 10px 0px; }
-#memory      { border-radius: 10px 0px 0px 10px; }
-#temperature { border-radius: 0px; }
+#cpu         { border-radius: 0px 5px 5px 0px; }
+#memory      { border-radius: 5px 0px 0px 5px; }
+#temperature { padding: 2px; border-radius: 0px; }
 
 /* Window */
 window#waybar {
