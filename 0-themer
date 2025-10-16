@@ -15,7 +15,7 @@ EOF
     if pgrep -x Hyprland >/dev/null 2>&1; then
       killall -q waybar    && waybar &
       killall -q hyprpaper && hyprpaper &
-      killall -q mako      && mako &
+      makoctl reload
       hyprctl reload
     fi
   }
