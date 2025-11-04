@@ -1,18 +1,12 @@
-set -l --append colors red green yellow blue magenta cyan
-set -l index (math "$(random) % 6 + 1")
-
-set -g random_color $colors[$index]
-
 function fish_git_prompt
-    if not command -sq git
-        return 1
-    end
+    command -sq git || return 1
 
-    set -l branch (command git branch --show-current 2>/dev/null)
-    test -n "$branch"
-    or return
+    set -l git_status (command git status --porcelain=1 --branch 2>/dev/null)
 
-    set -l changes (command git status --porcelain 2>/dev/null | awk '{print $1}' | sort -u)
+    test -n "$git_status" || return 1
+
+    set -l branch (string match -rg '^## (\w+)' $git_status)
+    set -l changes (string trim $git_status | string match -r '^[AMDR\?]' | sort -u)
 
     set -l bits
     for p in $changes
@@ -25,15 +19,13 @@ function fish_git_prompt
                 set -a bits '!'
             case R
                 set -a bits '>'
-            case \?\?
+            case \?
                 set -a bits '?'
         end
     end
 
     set -l sha (command git rev-parse --short=5 HEAD 2>/dev/null)
 
-    echo -e \ue725 (set_color $random_color) $branch (set_color normal)$sha
-    if test -n "$bits"
-        echo $(string join "" $bits)
-    end
+    echo -e \ue725 (set_color $random_color)$branch(set_color normal):$sha
+    test -n "$bits" && echo (set_color $random_color)(string join "" $bits)(set_color normal)
 end
