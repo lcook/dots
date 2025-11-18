@@ -4,6 +4,10 @@ set -l index (math "$(random) % 6 + 1")
 set -g random_color $colors[$index]
 
 function fish_prompt
+    if test -f /run/.containerenv
+        echo -n "⬢ "
+    end
+
     if set -q SSH_TTY
         echo -n "* "
     end
