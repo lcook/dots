@@ -2,11 +2,10 @@
 fish/completions
 fish/config.fish
 fish/fish_variables
+ghostty/config
 hypr/colors/theme.conf
 hypr/hyprpaper.conf
-hypr/monitors.conf
 hypr/workspaces.conf
 mako/config
 tofi/config
 waybar/theme.css
-ghostty/config
