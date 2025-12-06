@@ -4,8 +4,6 @@
 * {
   border: none;
   border-radius: 5px;
-  font-size: 10pt;
-  font-family: "Iosevka", "Font Awesome 7 Free";
   padding: 4px;
   transition: background-color .2s ease-out;
 }
