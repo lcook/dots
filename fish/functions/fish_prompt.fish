@@ -12,5 +12,5 @@ function fish_prompt
         echo -n "* "
     end
 
-    echo -e (set_color $random_color)(prompt_hostname) (set_color normal)(prompt_pwd -D2) (fish_git_prompt) \u03bb" "
+    echo -e (set_color $random_color)$USER(set_color normal):(prompt_pwd -D2) (fish_git_prompt) "% "
 end
