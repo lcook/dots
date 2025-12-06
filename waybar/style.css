@@ -12,7 +12,7 @@
 
 /* Workspaces */
 #workspaces {
-  background-color: @background;
+  background-color: @secondary;
   opacity: 0.90;
 }
 
@@ -23,17 +23,17 @@
 }
 
 #workspaces button.active {
-  background-color: @background1;
+  background-color: @tertiary;
   color: @accent;
 }
 
 #workspaces button.urgent {
-  background-color: @urgent;
+  background-color: @error;
 }
 
 #workspaces button:hover {
-  background: @background1;
-  border: @background1;
+  background: @tertiary;
+  border: @tertiary;
   box-shadow: inherit;
   text-shadow: inherit;
 }
@@ -50,7 +50,7 @@
 #tray,
 #window {
   color: @foreground;
-  background-color: @background;
+  background-color: @secondary;
   opacity: 0.90;
   padding: 15px
 }

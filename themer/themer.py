@@ -21,11 +21,11 @@ def parse_arguments() -> Namespace:
 class ThemeAdapter:
 
     _DEFAULT_THEME_FIELDS: list[str] = [
-        "accent",
-        "background",
-        "background1",
+        "primary",
+        "secondary",
+        "tertiary",
         "foreground",
-        "urgent",
+        "error",
         "wallpaper",
         "font",
     ]
