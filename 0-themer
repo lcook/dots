@@ -15,6 +15,7 @@ EOF
     if pgrep -x Hyprland >/dev/null 2>&1; then
       killall -q waybar    && waybar &
       killall -q hyprpaper && hyprpaper &
+      kill -USR2 $(pgrep ghostty)
       makoctl reload
       hyprctl reload
     fi
