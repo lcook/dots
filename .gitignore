@@ -7,5 +7,6 @@ hypr/colors/theme.conf
 hypr/hyprpaper.conf
 hypr/workspaces.conf
 mako/config
+nvim/lazy-lock.json
 tofi/config
 waybar/theme.css
