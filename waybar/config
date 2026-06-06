@@ -108,7 +108,7 @@
   },
   "hyprland/language": {
     "format": "  {}",
-    "on-click": "hyprctl switchxkblayout sleepdealer-bb60 next"
+    "on-click": "hyprctl switchxkblayout current next"
   },
   "hyprland/window": {
     "max-length": 60,
