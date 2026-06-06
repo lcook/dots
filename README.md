@@ -47,10 +47,10 @@ a consistent environment across different systems.
                               configuration files based on the theme.conf
                               configuration file. Make sure to specify the desired
                               theme name when executing the script. For example,
-                              to use the theme named `pontocho`, run:
+                              to use the theme named `yorha`, run:
 
     ```shell
-    ./0-themer pontocho
+    ./0-themer yorha
     ```
 
 3. **Set up symbolic links**: The final step is to ensure that the symbolic link
