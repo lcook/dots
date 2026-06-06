@@ -23,4 +23,3 @@ if status is-login
 end
 
 __ssh_agent_start
-__yorha_env_start
