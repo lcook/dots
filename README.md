@@ -14,10 +14,9 @@ a consistent environment across different systems.
 
 #### Screenshots
 
-![](.resources/screenshot_1.png)
-![](.resources/screenshot_2.png)
-![](.resources/screenshot_3.png)
-![](.resources/screenshot_4.png)
+![](.resources/yorha.png)
+![](.resources/pontocho.png)
+![](.resources/nebula.png)
 
 #### Applications
 
